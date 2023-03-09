@@ -6,11 +6,12 @@ namespace SpeechToTextApp
 {
     class SpeechRecognizedUtility
     {
-        SpeechConfig speechConfig = SpeechConfig.FromSubscription("*****************************", "eastasia");
+        SpeechConfig speechConfig = default!;
         AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = default!;
 
-        public SpeechRecognizedUtility(List<string> sourceLanguageConfig)
+        public SpeechRecognizedUtility(string key, string region, List<string> sourceLanguageConfig)
         {
+            speechConfig = SpeechConfig.FromSubscription(key, region);
             autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromLanguages(sourceLanguageConfig.ToArray());
         }
 
